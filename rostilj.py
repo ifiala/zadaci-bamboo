@@ -61,6 +61,8 @@ for key in kolicina_z:
             break
     if(postoji == False):
         ukupna_kolicina[key]=kolicina_z[key]
+
+
         
 for key in kolicina_d:
     postoji = False
@@ -103,6 +105,8 @@ if (paketBoolean1 == False):
             break
         else:
             paketBoolean2 = True
+            
+#Counteri za pakete
 paket1Counter = 0
 paket2Counter = 0   
 
@@ -133,13 +137,13 @@ if (paketBoolean1 == True):
             ostatak[key]=ukupna_kolicina[key] 
             
             
-           
+    #paket 1 koliko treba       
     while paketi['Ćevapćići'] > 0 and paketi['Piletina'] > 0 and paketi['Kobasice'] > 0:
         paketi['Ćevapćići'] = paketi['Ćevapćići'] - 500
         paketi['Piletina'] = paketi['Piletina'] - 500
         paketi['Kobasice'] = paketi['Kobasice'] - 400
         paket1Counter += 1
-    
+    #prebacivanje u ostatak 
     ostatak.update(paketi)
     for i in paket_2:
         postoji = False
@@ -152,18 +156,18 @@ if (paketBoolean1 == True):
             break
         else:
             paketBoolean2 = True
-            
+    #provjera moze li se dio ili cijeli ostatak kupit preko paketa 2        
     if (paketBoolean2 == True):
         while ostatak['Ćevapćići'] > 500 and ostatak['Kobasice'] > 400:
             ostatak['Ćevapćići'] = ostatak['Ćevapćići'] - 1000
             ostatak['Kobasice'] = ostatak['Kobasice'] - 800
             paket2Counter += 1
         
-    print (ostatak)
+    
         
 
 
-        
+    #sve sto se ne moze preko paketa    
     while ostatak['Ćevapćići'] > 0:
         if (500 >= ostatak['Ćevapćići'] ):
             ostatak['Ćevapćići'] = ostatak['Ćevapćići'] - 500
@@ -215,7 +219,7 @@ if (paketBoolean1 == True):
             ostatak['Kotleti'] = ostatak['Kotleti'] - 1000
             kotleti1000counter += 1
     
-    print (ostatak)
+  
         
     
 
@@ -345,7 +349,7 @@ else:
             ostatak['Piletina'] = ostatak['Piletina'] - 1000
             piletina1000counter += 1
     
-    
+#ispis svega što treba kupit    
 print ("Kako bi se svi najeli za roštilj je potrebno: ")  
 if (paket1Counter > 0):
     print (paket1Counter, " Roštilj paket 500g Ćevapa + 500g Piletine + 400g Kobasice ")
@@ -375,11 +379,13 @@ if (kotleti500counter > 0):
 if (kotleti1000counter > 0):
     print (kotleti1000counter, " Paketa 1000g Kotleta")
     
-    
+#konacna cijena   
 suma = paket1Counter * 65 + paket2Counter * 55 + cevapcici500counter * 22 + cevapcici1000counter * 35 + cevapcici2000counter * 60 + piletina500counter * 35 + piletina1000counter * 60 + kobasice400counter * 15 + kobasice800counter * 25 + kotleti500counter * 20 + kotleti1000counter * 35
    
 print ("Ukupna cijena svega je: ", suma, "Kn")  
 
+
+#odbrojavanje do 1. svibnja
 PRVI_SVIBANJ = datetime(year=2021, month=5, day=1)
 
 countdown = PRVI_SVIBANJ - datetime.today()
